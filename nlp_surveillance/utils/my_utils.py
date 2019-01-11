@@ -86,7 +86,7 @@ def get_sentence_and_date_from_annotated_span(annotated_span, anno):
     text = anno.text
     start_of_text = re.search("(?s:.*)\S\.\s[A-Z]", text[:annotated_span.start]).span()[1]
     end_of_text = re.search(r'\S\.\s[A-Z]', text[annotated_span.end:]).span()[0]
-    return text[start_of_text-1:annotated_span.end+end_of_text+2], annotated_span.datetime_range
+    return text[start_of_text-1:annotated_span.end+end_of_text+2]#, annotated_span.datetime_range
 
 
 def convert_open_epitator_range_to_smaller_range(annotated_span):

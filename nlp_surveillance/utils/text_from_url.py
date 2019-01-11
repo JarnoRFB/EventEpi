@@ -43,11 +43,15 @@ def extract_cleaned_text_from_html_webpage(url):
 
 
 def clean_text(text):
-    word_token = word_tokenize(text)
-    stop_words = set(stopwords.words('english'))
-    cleaned_text = [_lemmatize(word) for word in word_token
-                    if word not in stop_words
-                    and _letters_only(word)]
+    try:
+        word_token = word_tokenize(text)
+        stop_words = set(stopwords.words('english'))
+        cleaned_text = [_lemmatize(word) for word in word_token
+                        if word not in stop_words
+                        and _letters_only(word)]
+    except TypeError as e:
+        print(text, 'caused', e)
+        cleaned_text = None
     return cleaned_text
 
 
